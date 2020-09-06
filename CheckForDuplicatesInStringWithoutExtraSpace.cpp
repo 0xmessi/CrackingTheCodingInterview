@@ -1,15 +1,24 @@
 #include <iostream>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 
 bool checkstring(string s1)
 {
-    sort( s1.begin(),s1.end() );
-    for(int i=0 ; i<s1.length()-1; i++)
+    if( s1.length() > 128 )
     {
-        if( s1[i] == s1[i+1] )
+        return false;
+    }
+    bool chars[128];
+    memset(chars,0,sizeof(chars));
+    for(char c: s1)
+    {
+        if( chars[c] )
         {
             return false;
+        }
+        else
+        {
+            chars[c] = 1;
         }
     }
     return true;
