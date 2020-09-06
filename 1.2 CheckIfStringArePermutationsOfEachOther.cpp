@@ -9,10 +9,8 @@ bool checkstring(string s1, string s2)
     {
         return false;
     }
-    bool charsins1[128];
+    int charsins1[128];
     memset(charsins1,0,sizeof(charsins1));
-    bool charsins2[128];
-    memset(charsins2,0,sizeof(charsins2));
     
     for(char c: s1)
     {
@@ -20,11 +18,8 @@ bool checkstring(string s1, string s2)
     }
     for(char c : s2)
     {
-        charsins2[c] += 1;
-    }
-    for(int i=0 ; i<128 ; i++)
-    {
-        if(charsins1[i] != charsins2[i])
+        charsins1[c] -= 1;
+        if( charsins1[c] < 0)
         {
             return false;
         }
